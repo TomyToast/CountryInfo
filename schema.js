@@ -22,15 +22,26 @@ const CountryInfo = new GraphQLObjectType({
 const RootQuery = new GraphQLObjectType({
     name: 'RootQueryType',
     fields: {
-        info: {
+        countryList: {
             type: new GraphQLList(CountryInfo),
             resolve(parent, args) {
                 return axios.get('https://restcountries.eu/rest/v2/all').then( res => res.data );
             }
-        }
-    }
+        },
+        country: {
+            type: CountryInfo,
+            args: {
+                countryName: { type: GraphQLString }
+            },
+            resolve(parent, args) {
+               return axios
+               .get(`https://restcountries.eu/rest/v2/name/${args.countryName}`)
+               .then(res => res.data);
+            }
+        },
+    },
 });
 
 module.exports = new GraphQLSchema({
-    query: RootQuery
-})
+    query: RootQuery,
+});

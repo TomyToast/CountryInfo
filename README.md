@@ -2,7 +2,8 @@
 App with info about countries from API,
 GraphQL practice
 
-# Stack
+# Technologies used
 - React.js
 - GraphQL
+- Bootstrap
 - Node.js

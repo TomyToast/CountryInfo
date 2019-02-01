@@ -31,12 +31,11 @@ const RootQuery = new GraphQLObjectType({
         country: {
             type: CountryInfo,
             args: {
-                countryName: { type: GraphQLString }
+                name: { type: GraphQLString }
             },
-            resolve(parent, args) {
-               return axios
-               .get(`https://restcountries.eu/rest/v2/name/${args.countryName}`)
-               .then(res => res.data);
+            async resolve(parent, args) {
+               const element = await axios.get(`https://restcountries.eu/rest/v2/name/${args.name}`).then(res => res.data);
+               return element[0];
             }
         },
     },

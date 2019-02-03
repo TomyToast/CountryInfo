@@ -1,4 +1,6 @@
-import React from 'react'
+import React from 'react';
+import NumberFormat from 'react-number-format';
+import { Link } from 'react-router-dom';
 
 export default ({ country: { name, capital, population, flag } }) => {
   return (
@@ -12,11 +14,19 @@ export default ({ country: { name, capital, population, flag } }) => {
             <div className="col-md-6 card card-body bg-primary">
                 <ul className="list-group">
                     <li className="list-group-item">The Capital City: { capital }</li>
-                    <li className="list-group-item">{name} Population: { population }</li>
+                    <li className="list-group-item">
+                        {name} Population:
+                        <NumberFormat
+                            value={ population }
+                            displayType={'text'}
+                            thousandSeparator={" "}
+                            prefix={" "}
+                        />
+                    </li>
                 </ul>
             </div>
             <div className="col-md-3 align-self-end">
-                <button className="btn btn-primary">Country Details</button>
+                <Link to={`/country/${name}`} className="btn btn-primary">Country Details</Link>
             </div>
         </div>
     </div>

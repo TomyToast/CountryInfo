@@ -7,6 +7,7 @@ const COUNTRY_QUERY = gql`
     query CountryQuery($name: String!) {
         country(name: $name) {
             name,
+            capital,
             population,
             flag
         }
@@ -17,11 +18,12 @@ export class Country extends Component {
   render() {
       let { name } = this.props.match.params;
       name = encodeURIComponent(name);
+
     return (
       <Fragment>
-        <Query query={COUNTRY_QUERY} variables={{name}}>
+        <Query errorPolicy="all" query={COUNTRY_QUERY} variables={{name}}>
             {
-                (loading, error, data) => {
+                ({loading, error, data}) => {
                     if (loading) return <h4>loading</h4>
                     if (error) console.log(error);
 

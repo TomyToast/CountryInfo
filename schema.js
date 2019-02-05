@@ -3,6 +3,7 @@ const {
     GraphQLObjectType,
     GraphQLInt,
     GraphQLString,
+    GraphQLNonNull,
     GraphQLList,
     GraphQLSchema
     } = require('graphql');
@@ -15,8 +16,16 @@ const CountryInfo = new GraphQLObjectType({
         capital: { type: GraphQLString },
         population: { type: GraphQLInt },
         flag: { type: GraphQLString },
+        region: { type: GraphQLString },
+        nativeName: { type: GraphQLString },
+        // latlng: { type: GraphQLNonNull }
     })
 })
+/* latLang Query
+const latLang = new GraphQLObjectType({
+    x: { type: GraphQLInt },
+    y: { type: GraphQLInt }
+})*/
 
 // Root Query
 const RootQuery = new GraphQLObjectType({

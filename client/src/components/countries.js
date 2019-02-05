@@ -33,7 +33,6 @@ export class Countries extends Component {
                         </div>
                     )
                     if (error) console.log(error);
-                    console.log(data);
 
                     return (
                         <Fragment>

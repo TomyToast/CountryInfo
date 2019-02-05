@@ -9,7 +9,10 @@ const COUNTRY_QUERY = gql`
             name,
             capital,
             population,
-            flag
+            flag,
+            region,
+            nativeName,
+            # latlng
         }
     }
 `;
@@ -27,8 +30,22 @@ export class Country extends Component {
                     if (loading) return <h4>loading</h4>
                     if (error) console.log(error);
 
-                    console.log(data);
-                    return <h1>test</h1>
+                    const { name, capital, population, flag, region, nativeName, latlng } = data.country
+                    return (
+                        <div className="card card-body bg-primary text-white ">
+                            <div className="row">
+                                <div className="card bg-primary col-md-12 d-flex justify-content-center align-items-center">
+                                    <div className="row">
+                                        <h2 className="display-4 mt-3">{ name }</h2>
+                                        <img src={flag} alt={`${name}_flag`} style={{width:100, height:50}}/>
+                                    </div>
+                                    <h3 className="mb-3">Origin name: { nativeName }</h3>
+                                    <h4>Region: {region}</h4>
+                                </div>
+                            </div>
+                            <Link to="/" className="btn btn-primary">Back</Link>
+                        </div>
+                    )
                 }
             }
         </Query>

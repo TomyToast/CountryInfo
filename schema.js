@@ -18,14 +18,16 @@ const CountryInfo = new GraphQLObjectType({
         flag: { type: GraphQLString },
         region: { type: GraphQLString },
         nativeName: { type: GraphQLString },
-        // latlng: { type: GraphQLNonNull }
+        latlng: { type: latLang }
     })
 })
-/* latLang Query
+//  latLang Query
 const latLang = new GraphQLObjectType({
-    x: { type: GraphQLInt },
-    y: { type: GraphQLInt }
-})*/
+    name: 'latLang',
+    fields: () => ({
+        c: {type: GraphQLInt}
+    })
+})
 
 // Root Query
 const RootQuery = new GraphQLObjectType({

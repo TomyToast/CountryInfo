@@ -26,7 +26,11 @@ export default ({ country: { name, capital, population, flag } }) => {
                 </ul>
             </div>
             <div className="col-md-3 align-self-end">
-                <Link to={`/country/${name}`} className="btn btn-primary">Country Details</Link>
+                <Link
+                    to={`/country/${name}`}
+                    className="btn btn-primary">
+                    Country Details
+                </Link>
             </div>
         </div>
     </div>

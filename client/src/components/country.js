@@ -30,7 +30,7 @@ export class Country extends Component {
                     if (loading) return <h4>loading</h4>
                     if (error) console.log(error);
 
-                    const { name, capital, population, flag, region, nativeName, latlng } = data.country
+                    const { name, capital, population, flag, region, nativeName} = data.country
                     return (
                         <div className="card card-body bg-primary text-white ">
                             <div className="row">

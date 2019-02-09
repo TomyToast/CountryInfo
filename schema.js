@@ -18,7 +18,8 @@ const CountryInfo = new GraphQLObjectType({
         flag: { type: GraphQLString },
         region: { type: GraphQLString },
         nativeName: { type: GraphQLString },
-        latlng: { type: latLang }
+        latlng: { type: latLang },
+        alpha3Code: { type: GraphQLString}
     })
 })
 //  latLang Query
@@ -35,8 +36,9 @@ const RootQuery = new GraphQLObjectType({
     fields: {
         countryList: {
             type: new GraphQLList(CountryInfo),
-            resolve(parent, args) {
-                return axios.get('https://restcountries.eu/rest/v2/all').then( res => res.data );
+            async resolve(parent, args) {
+                const list = await axios.get('https://restcountries.eu/rest/v2/all').then( res => res.data );
+                return list;
             }
         },
         country: {

@@ -8,7 +8,8 @@ import Region from './components/region';
 import './App.css';
 
 const client = new ApolloClient({
-  uri: 'http://localhost:5000/graphql'
+  // uri: 'http://localhost:5000/graphql'
+  uri: '/graphql'
 });
 
 class App extends Component {

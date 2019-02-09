@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
+import Chart from './chart';
 import CountryItem from './countryItem';
 
 const COUNTRIES_QUERY = gql`
@@ -10,7 +11,8 @@ const COUNTRIES_QUERY = gql`
         capital,
         population,
         flag,
-        region
+        region,
+        alpha3Code
     }
 }`;
 
@@ -18,7 +20,6 @@ export class Region extends Component {
     render(){
         let { regionName } = this.props.match.params;
         regionName = encodeURIComponent(regionName);
-        
         return (
             <Fragment>
                 <Query query={COUNTRIES_QUERY} >
@@ -31,6 +32,7 @@ export class Region extends Component {
 
                                 return(
                                     <Fragment>
+                                        <Chart country={elements}/>
                                         {
                                             elements.map(country => (
                                                 <CountryItem key={country.name} country={country}/>

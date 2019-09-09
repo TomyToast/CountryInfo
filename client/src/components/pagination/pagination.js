@@ -9,12 +9,12 @@ const Pagination = ({ postPerPage, totalPosts, paginate }) => {
 
     return (
         <nav>
-            <ul className='pagination'>
+            <ul className='pagination justify-content-between'>
                 {pageNumbers.map(number => (
-                    <li key={number} className='page-item'>
-                        <a onClick={() => paginate(number)} href='!#' className="page-link">
+                    <li key={number} className='page-item '>
+                        <button onClick={() => paginate(number)} href='#' className="btn btn-secondary ">
                             {number}
-                        </a>
+                        </button>
                     </li>
                 ))}
             </ul>

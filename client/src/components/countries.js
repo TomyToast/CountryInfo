@@ -43,14 +43,18 @@ export class Countries extends Component {
 
                             /// Get current post
 
-                            const { currentPage, postPerPage, setCurrentPage } = this.state;
+                            const { currentPage, postPerPage } = this.state;
 
                             const indexOfLastPost = currentPage * postPerPage;
                             const indexOfFirstPost = indexOfLastPost - postPerPage;
                             const currentPosts = data.countryList.slice(indexOfFirstPost, indexOfLastPost);
 
                             /// Change page
-                            const paginate = pageNumber => setCurrentPage(pageNumber);
+                            const paginate = (pageNumber) => {
+                                this.setState(() => {
+                                    return { currentPage: pageNumber }
+                                })
+                            };
 
                             return (
                                 <Fragment>

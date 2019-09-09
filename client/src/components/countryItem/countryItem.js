@@ -5,7 +5,7 @@ import InfoCard from './infoCard';
 import DetailsBtn from './detailsBtn';
 
 const CountryItem = ({ countryList, loading }) => {
-    console.log(countryList);
+    // console.log(country);
     if (loading) {
         return <h2>Loading...</h2>
     }
